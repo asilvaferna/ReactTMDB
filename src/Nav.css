@@ -1,0 +1,31 @@
+.menu {
+    display: inline-block;
+}
+.menu__options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.menu__logo {
+    padding: 0px;
+    height: 100%;
+    padding: 15px; /* firefox bug fix */
+    width: auto;
+}
+.menu__option {
+    float: left;
+}
+.menu__link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+.menu__link--active {
+    background-color: #111;
+    color: rgb(75, 207, 121)
+}

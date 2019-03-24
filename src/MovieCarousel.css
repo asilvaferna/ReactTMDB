@@ -1,0 +1,12 @@
+.movies {
+    display: grid;
+    grid-gap: .5em;
+    padding: 0;
+    margin: 0;
+}
+.movies__movie {
+    border: solid 1px lightgray;
+    border-radius: 2px;
+    padding: 1em;
+    grid-template-rows: 100px 300px;
+}

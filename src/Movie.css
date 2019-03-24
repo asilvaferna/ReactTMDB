@@ -1,0 +1,10 @@
+.movie {
+    text-align: center;
+}
+.movie__poster {
+    width: 20%;
+    height: 20%;
+}
+.movie__title {
+    font-size: 1em;
+}
