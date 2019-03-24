@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Videoteca
+El objetivo de la práctica es crear una aplicación con la que gestionar
+nuestras películas favoritas como colecciones.
 
-## Available Scripts
+## Comentarios
+Por motivos de tiempo me queda por terminar la parte de las colecciones.
+La parte del diseño de interfaz está sin hacer porque es la primera vez que hago una web completa. Hasta ahora solo había toqueteado parametros de CSS de plantillas ya hechas y poco más. Hice un curso de HTML + CSS básico y no es que me apasione el CSS la verdad.
 
-In the project directory, you can run:
+## Arquitectura
+Para obtener los datos de películas, utilizaremos el api de
+https://developers.themoviedb.org/3
 
-### `npm start`
+La aplicación guardará en localStorage las colecciones del usuario y
+las puntuaciones que cada pelicula tenga dentro de cada colección.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+La interfaz de la aplicación deberá realizarse con React.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Funcionalidad
+- Permitirá al usuario buscar directamente (/search/movie) películas para
+añadirlas a cada colección.
+- A parte, la propia aplicación ofrecerá una lista de sugerencias de películas
+populares (usando el endpoint /discover/movie?sort_by=popularity.desc) que
+también podrán añadirse a las colecciones del usuario.
+- El usuario debe poder valorar las películas de su colección dando una
+puntuación a cada una.
+- Podrá crear tantas colecciones como desee, y podrá modificarlas añadiendo
+o eliminando películas.
+- También habrá una vista de detalle de cada película en la que mostrar
+directamente los datos de la misma obtenidos del API de themoviedb.
+Collapse

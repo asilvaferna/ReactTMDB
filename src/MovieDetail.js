@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Rater from 'react-rater'
+import StarRatingComponent from 'react-star-rating-component'
 
 const MOVIE_DETAIL_URL = 'https://api.themoviedb.org/3/movie/{id}?api_key=f255983bec27fed8a5e4fbd9b0e7092c'
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
@@ -7,7 +7,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 class MovieDetail extends Component {
     constructor() {
         super()
-        this.state = { movie: {}, loading: false, error: false }
+        this.state = { movie: {}, isShowingForm: false, collectionTitle: '', loading: false, error: false }
     }
 
     state = { loading: true }
@@ -25,8 +25,46 @@ class MovieDetail extends Component {
         }
     }
 
+    showForm = () => {
+        console.log('Show form')
+        this.setState({ isShowingForm: true })
+    }
+
+    /*
+    collections: [
+        {
+            name: string,
+            movies: [] 
+        }
+    ]
+    */
+
+    addCollection = (name) => {
+        const localCollections = JSON.parse(localStorage.getItem('collections')) || []
+        localCollections.forEach(collection => {
+            if (collection.name === name) {
+                collection.movies.push(this.state.movie)
+            } else {
+                const collection = { name: name, movies: this.state.movies }
+                localCollections.push(collection)
+            }
+        })
+
+        localStorage.setItem('collections', JSON.stringify(localCollections))
+        const localCollections2 = JSON.parse(localStorage.getItem('collections')) || []
+        localCollections2.forEach(collection => {})
+    }
+
+    setCollectionTitle = (event) => {
+        this.setState({ collectionTitle: event.target.value })
+    }
+
+    setCollection = () => {
+        this.addCollection(this.state.collectionTitle)
+    }
+
     render() {
-        const { movie, loading, error } = this.state
+        const { movie, isShowingForm, loading, error } = this.state
         if (loading) {
             return <p>Loading movie...</p>
         }
@@ -36,7 +74,7 @@ class MovieDetail extends Component {
         }
 
         return (
-            <div>
+            <div className='moviewDetail'>
                 {
                     movie.poster_path &&
                     <img src={IMG_URL + movie.poster_path} alt={movie.title} className="movie__poster" />
@@ -47,10 +85,20 @@ class MovieDetail extends Component {
                 <p>
                     {movie.overview}
                 </p>
-                <form>
-                    <Rater total={5} />
-                    <button type="submit">Submit</button>
-                </form>
+                <h3>Collections</h3>
+                {
+                    !isShowingForm &&
+                    <button onClick={this.showForm}>Add to Collection</button>
+                }
+                {
+                    isShowingForm &&
+                    <form>
+                        <form onSubmit={event => event.preventDefault()}>
+                            <input type='text' placeholder='Collection name' onChange={this.setCollectionTitle}/>
+                            <button onClick={this.setCollection}>Add</button>
+                        </form>
+                    </form>
+                }
             </div>
         )
     }
